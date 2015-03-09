@@ -24,3 +24,7 @@ AndroidBootstrap/build/
 .DS_Store
 
 target/
+Servers/
+.metadata
+RemoteSystemsTempFiles/
+.settings/
