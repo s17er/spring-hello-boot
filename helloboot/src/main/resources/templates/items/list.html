@@ -5,7 +5,13 @@
 	<title>ToDo一覧</title>
 </head>
 <body>
+<h1>ToDo一覧</h1>
 <table>
+	<p>
+		<form th:action="@{/items/add}" method="get">
+			<input type="submit" name="form" value="登録" />
+		</form>
+	</p>
 	<tr th:each="item : ${items}">
 		<td th:text="${item.id}"> 100</td>
 		<td th:text="${item.content}"> dummy</td>
