@@ -1,6 +1,8 @@
-package com.example;
+package com.example.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.entity.Item;
 
 /**
  * データストア（この場合はRDBMS）に対するItemエンティティの操作を提供するリポジトリクラス
