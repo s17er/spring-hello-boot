@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Item;
 import com.example.service.ItemService;
@@ -65,7 +66,7 @@ public class ItemController {
 	}
 
 	/**
-	 * 登録画面を返す
+	 * 登録処理
 	 * 
 	 * @param form 画面のフォームに入力された値がマッピングされたフォームクラス
 	 * @param result フォームのバリデーションを実行した結果が格納される（第一引数に@Validatedアノテーションが付いている場合）
@@ -82,4 +83,38 @@ public class ItemController {
 		this.itemService.create(item);
 		return "redirect:/items";
 	}
+
+	/**
+	 * 編集画面を返す
+	 * 
+	 * @param id hiddenフィールドに設定されたID
+	 * @param form 画面のフォームに入力された値がマッピングされたフォームクラス
+	 * @return 登録画面のテンプレートパス
+	 */
+	@RequestMapping(value = "edit", params = "form", method = RequestMethod.GET) 
+	String editForm(@RequestParam Integer id, ItemForm form) {
+		Item item = this.itemService.findOne(id);
+		BeanUtils.copyProperties(item, form);
+		return "items/edit";
+	}
+
+	/**
+	 * 登録処理
+	 * 
+	 * @param form 画面のフォームに入力された値がマッピングされたフォームクラス
+	 * @param result フォームのバリデーションを実行した結果が格納される（第一引数に@Validatedアノテーションが付いている場合）
+	 * @return 登録画面のテンプレートパス
+	 */
+	@RequestMapping(value = "edit", method = RequestMethod.POST) 
+	String edit(@RequestParam Integer id, @Validated ItemForm form, BindingResult result) {
+		// バリデーションエラーの場合は編集画面に戻る（フォームクラスを渡すことにより、入力値は保たれる）
+		if(result.hasErrors()) {
+			return editForm(id, form);
+		}
+		Item item = this.itemService.findOne(id);
+		BeanUtils.copyProperties(form, item);
+		this.itemService.update(item);
+		return "redirect:/items";
+	}
+
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>ToDo編集</title>
+</head>
+<body>
+	<h1>ToDo追加</h1>
+	<!-- @{action}で、Controllerにマッピングしたアクションとひもづける -->
+	<form th:action="@{/items/edit}" th:object="${itemForm}" method="post">
+		<dl>
+			<dt><label for="content">タスク内容</label></dt>
+			<!-- *{content}で、itemFormインスタンスのcontentフィールドとこのフォームの値をバインドする -->
+			<dd>
+				<input type="text" id="content" name="content" th:field="*{content}" class="error-messages" value="dummy" />
+				<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">error</span>
+			</dd>
+		</dl>
+		<input type="hidden" name="id" th:value="${param.id[0]}" />
+		<input type="submit" value="編集" />
+	</form>
+</body>
+</html>

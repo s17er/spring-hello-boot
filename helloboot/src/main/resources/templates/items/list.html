@@ -15,6 +15,18 @@
 	<tr th:each="item : ${items}">
 		<td th:text="${item.id}"> 100</td>
 		<td th:text="${item.content}"> dummy</td>
+		<td>
+		<form th:action="@{/items/edit}" method="get">
+			<input type="hidden" name="id" th:value="${item.id}" />
+			<input type="submit" name="form" value="編集" />
+		</form>
+		</td>
+		<td>
+		<form th:action="@{/items/delete}" method="get">
+			<input type="hidden" name="id" th:value="${item.id}" />
+			<input type="submit" value="削除" />
+		</form>
+		</td>
 	</tr>
 </table>
 </body>
