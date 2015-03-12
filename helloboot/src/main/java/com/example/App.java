@@ -18,7 +18,6 @@ import com.example.repository.ItemRepository;
  * Hello world!
  *
  */
-@RestController
 @EnableAutoConfiguration
 @ComponentScan
 public class App extends SpringBootServletInitializer {
@@ -35,6 +34,7 @@ public class App extends SpringBootServletInitializer {
     	return application.sources(App.class);
     }
 
+    /*
     @RequestMapping("/")
     public String home() {
     	StringBuffer sb = new StringBuffer();
@@ -48,4 +48,5 @@ public class App extends SpringBootServletInitializer {
     	}
         return sb.toString();
     }
+    */
 }
