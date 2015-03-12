@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>ToDo一覧</title>
+</head>
+<body>
+<table>
+	<tr th:each="item : ${items}">
+		<td th:text="${item.id}"> 100</td>
+		<td th:text="${item.content}"> dummy</td>
+	</tr>
+</table>
+</body>
+</html>
