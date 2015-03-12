@@ -52,6 +52,16 @@
         	<version>1.16.0</version>
         	<scope>provided</scope>
         </dependency>
+
+        <!-- Viewテンプレートの依存情報 -->
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
   </dependencies>
 
   <!-- (4) アプリケーションを簡単に実行、ビルドするためのMavenプラグインを設定 -->
