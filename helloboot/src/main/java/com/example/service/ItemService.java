@@ -25,6 +25,10 @@ public class ItemService {
 		return this.itemRepository.findOne(id);
 	}
 	
+	public Item create(Item item) {
+		return this.itemRepository.save(item);
+	}
+
 	public Item update(Item item) {
 		return this.itemRepository.save(item);
 	}
