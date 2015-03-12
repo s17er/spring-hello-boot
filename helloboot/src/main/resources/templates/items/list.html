@@ -22,7 +22,7 @@
 		</form>
 		</td>
 		<td>
-		<form th:action="@{/items/delete}" method="get">
+		<form th:action="@{/items/delete}" method="post">
 			<input type="hidden" name="id" th:value="${item.id}" />
 			<input type="submit" value="削除" />
 		</form>

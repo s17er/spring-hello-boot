@@ -117,4 +117,12 @@ public class ItemController {
 		return "redirect:/items";
 	}
 
+	@RequestMapping(value = "delete", method = RequestMethod.POST) 
+	String delete(@RequestParam Integer id) {
+		this.itemService.delete(id);
+		return "redirect:/items";
+	}
+
+
+
 }
