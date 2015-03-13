@@ -81,7 +81,8 @@ public class ItemRestController {
 	String getItemsCsv() {
 		List<Item> items = this.itemService.findAll();
 		CsvMapper mapper = new CsvMapper();
-		CsvSchema schema = mapper.schemaFor(Item.class).withHeader().sortedBy("id", "content");
+		CsvSchema schema = mapper.schemaFor(Item.class).withHeader();
+		mapper.readerWithSchemaFor(Item.class);
 		try {
 			String res = mapper.writer(schema).writeValueAsString(items);
 			return res;

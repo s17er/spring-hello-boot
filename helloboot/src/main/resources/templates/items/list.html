@@ -11,6 +11,9 @@
 		<form th:action="@{/items/add}" method="get">
 			<input type="submit" name="form" value="登録" />
 		</form>
+		<form th:action="@{/api/items/csvfile}" method="get">
+			<input type="submit" name="form" value="CSV出力" />
+		</form>
 	</p>
 	<tr th:each="item : ${items}">
 		<td th:text="${item.id}"> 100</td>
