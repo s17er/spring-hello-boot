@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>ToDo一覧</title>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+	<!--
+	$(function() {
+		$(document).ready(load);
+		
+		function load() {
+			console.log('load');
+			$.ajax({
+				type: 'GET',
+				url: '/api/items',
+				dataType: 'json',
+				success: function(data){
+					bind(data);
+				},
+			});
+		}
+		
+		function bind(data) {
+			var container = $('#container');
+			$.each(data, function(){
+				var tr = $('<tr>');
+				tr.append('<td id="itemId">' + this.id + '</td>');
+				tr.append('<td>' + encode(this.content) + '</td>');
+				tr.append('<td>');
+				/*
+				tr.append('<input type="button" class="edit" value="編集"/>');
+				tr.append('<input type="button" class="delete" value="削除"/>');
+				*/
+				tr.append('</td>');
+				container.append(tr);
+			});
+		}
+		
+		function encode(str) {
+			return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+		}
+
+	});
+	-->
+	</script>
+</head>
+<body>
+<h1>ToDo一覧 (jQuery版)</h1>
+<a th:href="@{/items}">サーバ版へ</a>
+<p>
+<!--
+        <form th:action="@{/items/add}" method="get">
+                <input type="submit" name="form" value="登録" />
+        </form>
+  -->
+        <form th:action="@{/api/items/csvfile}" method="get">
+                <input type="submit" name="form" value="CSV出力" />
+        </form>
+</p>
+<table id="container">
+</table>
+<!--
+<table>
+	<tr th:each="item : ${items}" id="item">
+		<td th:text="${item.id}"> 100</td>
+		<td th:text="${item.content}"> dummy</td>
+		<td>
+		<form th:action="@{/items/edit}" method="get">
+			<input type="hidden" name="id" th:value="${item.id}" />
+			<input type="submit" name="form" value="編集" />
+		</form>
+		</td>
+		<td>
+		<form th:action="@{/items/delete}" method="post">
+			<input type="hidden" name="id" th:value="${item.id}" />
+			<input type="submit" value="削除" />
+		</form>
+		</td>
+	</tr>
+</table>
+  -->
+</body>
+</html>
