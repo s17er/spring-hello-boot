@@ -63,6 +63,18 @@
         	<artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
         
+        <!-- セキュリティの依存情報 -->
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        
+        <!-- DBマイグレーション -->
+        <dependency>
+        	<groupId>org.flywaydb</groupId>
+        	<artifactId>flyway-core</artifactId>
+        </dependency>
+
         <!-- Jackson -->
         <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) -->
         <dependency>
